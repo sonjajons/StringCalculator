@@ -39,4 +39,10 @@ public class CalculatorTest {
     public void testNewDelimiter(){
     	assertEquals(3, Calculator.add("//;\n1;2"));
     }    
+
+    @Test
+    public void testOneNegativeInput(){
+    	assertEquals("Negatives not allowed: -1", Calculator.add("-1,2"));
+    }
+    
 }
