@@ -3,9 +3,18 @@ package is.ru.stringcalculator;
 public class Calculator {
 
 	public static int add(String text){
+		
+		if(text.contains("//")){
+			text = formatStrDelim(text);
+		}
 		if(text.contains("\n")){
 			text = text.replace("\n", ",");
 		}
+
+		if(!text.equals("")){
+			text = removeFirst(text);
+		}
+
 		if(text.contains(",")){
 			return sum(splitNumbers(text));
 		}
@@ -30,6 +39,22 @@ public class Calculator {
 		    total += toInt(number);
 		}
 		return total;
+    }
+
+    private static String formatStrDelim(String text){
+    	String delim = text.substring(2,3);
+		
+		text = text.substring(3);
+		text = text.replace(delim, ",");
+		return text;
+    }
+
+    private static String removeFirst(String text){
+    	String first = text.substring(0,1);
+			if(first.equals(",")){
+				text = text.replaceFirst(",", "");
+			}
+		return text;
     }
 
 
