@@ -2,6 +2,9 @@ package is.ru.stringcalculator;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
+import java.lang.Object;
+import java.lang.Throwable;
+import java.lang.Exception;
 
 public class CalculatorTest {
 
@@ -23,7 +26,7 @@ public class CalculatorTest {
 	@Test
 	public void testTwoNumbers() {
 		assertEquals(3, Calculator.add("1,2"));
-	}	
+	}
 
 	@Test
     public void testMultipleNumbers(){
@@ -42,13 +45,14 @@ public class CalculatorTest {
 
     @Test
 	    public void testNegativeInput(){
+	    	//RuntimeException exception = null;
 	    	try{
-	    		Calculator.add("-1,2");
+	    		Calculator.add("2,-4,3,-5");
 	    	}
-	    	catch(RuntimeException e){
-	    		System.out.println("Negatives not allowed: " + e);
-	    	}
-    	
+	    	catch(Exception e){
+	    		final String exp = "Negatives not allowed: -4,-5";
+	    		assertEquals(exp, e.getMessage());
+	    	}	
     }
 
 }
