@@ -48,6 +48,9 @@ public class Calculator {
 	        	if(toInt(number) < 0){
 	        		collectNegNumbers(number);
 	        	}
+	        	if(toInt(number) > 1000){
+		        		continue;
+		        	}
 			    total += toInt(number);
 			}
 			return total;
